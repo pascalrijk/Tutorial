@@ -1,0 +1,79 @@
+﻿@using ihff.Models
+@model IEnumerable<Show>
+
+@{
+    ViewBag.Title = "Index";    
+}
+<br /><br /><br /><br />
+<div class="container">
+    <div class="section-title">
+        <h4>Programm</h4>
+        <h2>Activities <strong>during the festival</strong></h2>
+        <hr>
+        <div class="clearfix"></div>
+    </div>
+    <ul class="sort-list">
+        <li>
+            <span class="fa fa-dot-circle-o"></span>
+            <strong>@Html.ActionLink("Day", "Index", new { sortOrder = "day_desc" })</strong> 
+        </li>
+        <li>
+            <span class="fa fa-dot-circle-o"></span>
+            <strong>@Html.ActionLink("Wednesday", "Index", new { sortOrder = "wednesday" })</strong> 
+        </li>
+        <li>
+            <span class="fa fa-dot-circle-o"></span>
+            <strong>@Html.ActionLink("Thursday", "Index", new { sortOrder = "thursday" })</strong>
+        </li>
+        <li>
+            <span class="fa fa-dot-circle-o"></span>
+            <strong>@Html.ActionLink("Friday", "Index", new { sortOrder = "friday" })</strong>
+        </li>
+        <li>
+            <span class="fa fa-dot-circle-o"></span>
+            <strong>@Html.ActionLink("Saturday", "Index", new { sortOrder = "saturday" })</strong>
+        </li>
+        <li>
+            <span class="fa fa-dot-circle-o"></span>
+            <strong>@Html.ActionLink("Sunday", "Index", new { sortOrder = "sunday" })</strong>
+        </li>
+      
+    </ul>
+    <ul class="sort-list">
+        <li>
+            <span class="fa fa-dot-circle-o"></span>
+            <strong>@Html.ActionLink("Location", "Index", new { sortOrder = "location" })</strong>
+        </li>
+        <li>
+            <span class="fa fa-dot-circle-o"></span>
+            <strong>@Html.ActionLink("Philharmonie Haarlem", "Index", new { sortOrder = "philharmoniehaarlem" })</strong>
+        </li>
+        <li>
+            <span class="fa fa-dot-circle-o"></span>
+            <strong>@Html.ActionLink("Toneelschuur", "Index", new { sortOrder = "toneelschuur" })</strong>
+        </li>
+        <li>
+            <span class="fa fa-dot-circle-o"></span>
+            <strong>@Html.ActionLink("Patronaat", "Index", new { sortOrder = "patronaat" })</strong>
+        </li>
+        <li>
+            <span class="fa fa-dot-circle-o"></span>
+            <strong>@Html.ActionLink("Pathe", "Index", new { sortOrder = "pathe" })</strong>
+        </li>
+        
+
+    </ul>
+ 
+        @foreach (var show in Model)
+        {
+            <div class="activity-item">
+                <h1>@show.Activity.Name</h1>
+                <h3>Beschrijving: @show.Activity.Description</h3>
+                <p>Day: @show.Day</p>
+                <p>Locatie: @show.Location.Name</p>
+                <p>Zaal: @show.Room.Name</p>
+                <p>@Html.ActionLink("More info", "Activity", new { id = show.Activity.Id })</p>
+                <p>@Html.ActionLink("Add to wishlist", "??", new { id = show.Id })</p>
+            </div>
+        }
+    </div>

@@ -1,0 +1,22 @@
+﻿@using ihff.Models
+@model IEnumerable<Activity>
+
+@{
+    ViewBag.Title = "Index";
+}
+<br /><br /><br /><br />
+<div class="container">
+    <div class="section-title">
+        <h4>Restaurants</h4>
+        <h2>Dinners <strong>during the festival</strong></h2>
+        <hr>
+        <div class="clearfix"></div>
+    </div>
+    @foreach (var restaurant in Model)
+    {
+        <div class="activity-item">
+            <h1>@restaurant.Name</h1>
+            <p>@Html.ActionLink("Add to wishlist", "??", new { id = restaurant.Id })</p>
+        </div>
+    }
+</div>
